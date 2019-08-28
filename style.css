@@ -1,0 +1,92 @@
+body{
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+}
+.board-container{
+    width: 100vw;
+    height: 100vh;
+    perspective: 2000px;
+    /* background: #cfc; */
+}
+.boxes{
+    width: 300px;
+    height: 500px;
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    transform-style: preserve-3d;
+    transition: all 1s;
+    transform:rotateZ(-30deg) rotateY(45deg) rotateX(45deg);
+}
+.board{
+    width: 300px;
+    height: 500px;
+    background: #ccc;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -250px -10px;
+    transition: all 2s;
+}
+.chip, .shadow{
+    width:60px;
+    height: 60px;
+    background: blueviolet;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin:-30px 110px;
+    transition: all 2s;
+}
+
+.shadow{
+    background: #666;
+}
+.board.first{
+    transform: translateZ(-90px);
+}
+.board.first + .shadow{
+    filter: blur(10px);
+    opacity: 0.7;
+    transform: translateZ(-90px);
+}
+.board.first + .shadow + .chip{
+    transform: translateZ(40px);
+}
+
+.board.second{
+    transform: translateZ(-150px);
+}
+.board.second + .shadow{
+    filter: blur(15px);
+    opacity: 0.5;
+    transform: translateZ(-150px);
+}
+.board.second + .shadow + .chip{
+    transform: translateZ(100px);
+}
+
+/* navigation bar */
+.nav{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+.nav button{
+    padding: 8px 32px;
+    margin:4px;
+    background: #000;
+    color: #FFF;
+    border: none;
+}
+
+.boxes.reset{
+    transform:rotateZ(0) rotateY(0) rotateX(0);
+}
+.boxes.reset .board {
+    transform: translateZ(0);
+}
+.boxes.reset .board + .shadow + .chip {
+    transform: translateZ(0);
+}
